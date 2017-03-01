@@ -1,0 +1,280 @@
+1. Конвертер валют 
+function convertation (sum, course) {
+if (isNaN (parseFloat(sum)) || isNaN (parseFloat(course)) || (sum<=0 ||course<=0)) {
+alert ('Значения введены не корректно.');
+return;
+}
+var result = ((parseFloat (sum))*(parseFloat(course)));
+var reguest = sum +' евро по курсу ' + course +' равно '+ result + ' грн.';
+alert (reguest);
+}
+var sum = prompt('Введите сумму в евро.');
+var course = prompt('Введите курс евро.');
+convertation (sum, course);
+
+2.Стоимость разговора
+function costOfCall (priceOfMin, durationOfCall) {
+if (isNaN(parseFloat(priceOfMin)) || isNaN(parseFloat(durationOfCall)) || (priceOfMin<=0 || durationOfCall<=0)) {
+alert('Значения введены не корректно.');
+return;
+}
+var result = ((parseFloat(priceOfMin))*(parseFloat(durationOfCall)));
+var msg = priceOfMin +' * ' + durationOfCall +' равно '+ result + ' грн./мин.';
+alert (msg);
+}
+var priceOfMin = prompt('Введите стоимость одной минуты. грн.');
+var durationOfCall = prompt('Введите продолжительность звонка. мин.');
+costOfCall (priceOfMin, durationOfCall);
+
+
+3. Перевод в дюймы
+function RaschtetSant (santim, c) {
+if (isNaN(santim)) {alert ('Введено некорректное значение');
+return;
+}
+var result = ((santim)* (c));
+var msg = santim+ ' * '+c+' '+' равно ' + result + ' '+'дюймов';
+alert (msg);
+}
+var santim = prompt ('Введите сантиметры');
+const c = 2.54;
+RaschtetSant (santim, c);
+
+4. Проверка кратности
+var ChisloUser = prompt ('Введите Ваше число');
+var a = [3,5,7];
+a.forEach(function(item, i, a) {
+ if (ChisloUser % item == 0) {
+  alert('Ваша число кратно '+ item);
+  } else {
+   alert('Ваше число не кратно '+ item);
+  }
+});
+5.Максимум двух чисел
+var a = prompt('Введите первое число');
+var b = prompt('Введите второе число');
+a = parseInt(a);
+b = parseInt(b);
+if (isNaN(a) || isNaN(b)) {
+    alert("Введите число");
+} else if (a==b) {
+    alert('Числа равны');
+} else {
+    alert('Максимальное число '+ Math.max(a,b));
+}
+ 6. День недели
+var week = ['понедельник', 'вторник', 'среда','четверг', 'пятница', 'суббота', 'воскресенье'];
+var number = prompt('Введите номер дня недели');
+var day = week[number-1];
+console.log(day);
+if (typeof(day) == 'undefined') {
+    alert('Error input number');
+} else {
+    alert(day);
+}
+7.Пенсия
+var gender = prompt('Введите пол: М или Ж');
+var age = prompt('Введите возвраст');
+if ((gender=='М' && age>65) || (gender=='Ж' && age>55)) {
+alert ('Пора на пенсию');
+} else {
+    alert('На пенсию не пора');
+ }
+ 
+ 8. Температура тела
+ var temper = prompt('Введите температуру тела');
+if (temper>41 || temper<35) {
+alert ('Труп');
+} else if (temper<36.6) {
+alert ('Упадок сил');
+} else if (temper>37) {
+alert ('Болен');
+} else if (temper>=36.6 && temper<=37) {
+alert ('Здоров');
+} else {
+alert ('Температура это число!!!');
+}
+9. Площадь фигуры
+var figure = prompt("Введите тип фигуры:Треугольник или Прямоугольник)");
+var a = prompt("Введите первую сторону");
+a = parseInt(a);
+var b = prompt("Введите вторую сторону");
+b = parseInt(b);
+ 
+if (figure == 'Т') {
+  var c = prompt("Введите третью сторону");
+  c = parseInt(c);
+  var perimeter = a + b + c;
+  var p = perimeter / 2;
+  var square = Math.sqrt(p*(p-a)*(p-b)*(p-c))
+  alert  ('Периметр равен'+' ' +perimeter+' '+' и '+ 'Площадь равна'+ ' '+square );
+  } else if (figure == 'П') {
+    var perimeter = (a + b)*2;
+  var square = a * b; 
+  alert  ('Периметр равен'+' ' +perimeter+' '+' и '+ 'Площадь равна'+ ' '+square );
+}
+10. Расчет скидки.
+var a = prompt ('Введите количество товара');
+var b = prompt ('Введите стоимость за штуку');
+n = parseInt(a);
+var valid = true;
+if (n!=a){
+    alert('Вы ввели дробное число');
+  valid = false;
+}
+if (a<0 || b<0){
+   alert('Введите положительное число');
+   valid = false;
+} 
+console.log(valid);
+if (valid == true) {
+    var c = a*b;
+  console.log(c);
+  if (c>=100 && c<200) {
+    d = c*0.03; 
+    alert('Сумма скидки составляет '+d);
+  } else if (c>=200 && c<300) {
+    d=c*0.05;
+    alert('Сумма скидки составляет '+d);
+  } else if (c>=300){
+    d = c*0.07;
+    alert('Сумма скидки составляет '+d);
+  }
+}
+11. Чет & нечет
+var even='';
+var odd='';
+for (var a=1; a <= 20; a++){
+
+if ((a % 2)==0) {
+even = even + ' ' + a;
+} else {
+odd = odd + ' ' + a;
+}
+}
+alert('Четные числа: '+even);
+alert('Нечетные числа: '+odd);
+
+12.Кратность 3-м
+var ost='';
+for (var a = 1; a<=20; a++) {
+    if (a % 3 !=0) {
+    ost=ost+' '+a;
+    } 
+}
+alert ('Числа не кратные 3:'+ost);
+
+
+13. Сумма диапазона
+var a= prompt('Введите минимальное число');
+var b= prompt('Введите максимальное значение');
+a=parseInt(a);
+b=parseInt(b);
+var valid=true;
+if (a<0){
+alert ('Введите корректные данные');
+var valid=false;
+} else if(b<0) {
+alert ('Введите корректные данные');
+var valid = false;
+} else  {
+var sum = 0;
+for (var i=a; i<=b; i++) { 
+  sum = sum + i;
+}
+alert(sum);
+}
+
+14. Разбивка числа
+while (isNaN(num)) {
+	var num = prompt("Введите число");
+  num = parseInt(num);
+}
+num=parseInt(num);
+var digits = [];
+var n = num;
+while (n > 1) {
+  digit = n % 10;
+  digits.push(parseInt(digit));
+  n = n / 10;
+}
+
+for (var i = 0; i < digits.length; i++) {
+	alert(digits[i]);
+}
+
+for (var i = digits.length; i > 0; i--) {
+	alert(digits[i-1]);
+}
+
+
+
+15. Переворот числа
+while (isNaN(a)) {
+var a = prompt('введите число');
+a=parseInt(a);
+}
+var r = 0;
+while (a >= 1) {
+ n = a % 10;
+ r = (r*10)+n;
+ a = parseInt(a/10);
+ }
+ alert(r);
+
+16.Простые числа
+function is_simple(n) {
+	result = true;
+	for (var i = 2; i < n; i++) {
+  	if (n % i == 0) result = false;
+  }
+  return result;
+}
+
+var min = prompt("Введите минимум");
+var max = prompt("Введите максимум");
+var simples = '';
+min=parseInt(min);
+max=parseInt(max);
+
+if (min > 0 && max > 0 && max > min) {
+  for (var i = min; i <= max; i++) {
+    if (is_simple(i)) simples = simples + " " + i;
+  }
+  alert("Простые числа: "+ simples);
+} else {
+	alert("Диапазон введен некорректно!");
+}
+
+
+17. Факториал
+var a =  prompt ('Введите число для подсчета его факториала');
+function factorial(a) {
+  return (a != 1) ? a * factorial(a - 1) : 1;
+  }
+if (a > 0) {alert("факториал числа " + a + " равен " + factorial(a) ); 
+} else if (a==0) {
+alert ("факториал числа 0 равен 1"); 
+} else {
+alert ('Факториала данного числа не существует');
+}
+
+18. Степень
+
+var a = prompt("Введите число");
+var c = prompt("Введите нужную Вам степень");
+
+a = parseInt(a);
+c = parseInt(c);
+if (isNaN(a) || isNaN(c)) {
+
+alert ('Введите корректное значение');
+} else if (a<0 || c<=0) {
+alert ('Введите правильное значение');
+}
+else {
+var b  = Math.pow(a,c);
+alert(b);
+}
+
+

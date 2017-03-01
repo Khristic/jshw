@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HW</title>
+	<script>
+function init() {
+	var btn = document.getElementById('btn');
+	btn.onmousedown = function(e) {
+		btn.style.position = 'absolute';
+		
+		function move(e) {
+			btn.style.left = e.pageX - btn.offsetWidth / 2 + 'px';
+			btn.style.top = e.pageY - btn.offsetHeight / 2 + 'px';
+		}
+		
+		document.onmousemove = function(e) {
+			move(e);
+		}
+		
+		btn.onmouseup = function() {
+			document.onmousemove = null;
+			btn.onmouseup = null;
+		}
+	}
+}
+	</script>
+</head>
+<body onload="init()">
+	<input id="btn" type="button" value="Перетащите меня" />
+</body>
+</html>

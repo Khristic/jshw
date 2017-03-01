@@ -1,0 +1,36 @@
+Файл регистрации
+
+
+var user={};
+var login = prompt ('Введите Ваш логин');
+var password = prompt ('Введите Ваш пароль' );
+user.login = login;
+user.password = password;
+console.log(user);
+localStorage.setItem(login, JSON.stringify(user));
+
+
+Файл авторизации
+var login = prompt(' Введите логин');
+var password = prompt('Введите пароль');
+var user = localStorage.getItem(login);
+user = JSON.parse(user);
+console.log(user);
+if((user != null) && (user.password == password)) {
+	alert('Вы авторизованы');
+} else {
+	alert('Вы ввели неправильные данные');
+}
+
+
+Шахматка
+var m=[];
+var line = 8;
+var column = 8;
+for(var i = 0; i<line; i++) {
+m[i]=[];
+for( var j = 0; j<column; j++){
+m[i][j]=((i+j)%2);
+}
+}
+console.log(m);

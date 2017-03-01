@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Шахматка</title>
+	<style>
+	td {
+		background-color: black;
+		width: 20px;
+		height: 20px;
+	}
+	.white {
+		background-color: white;
+	}
+	</style>
+</head>
+<body>
+<table id="board">
+</table>
+	<script>
+	var line = 8;
+	var column = 8;
+	var table = document.getElementById('board');
+	for (var i = 0; i<line; i++) {
+	  var row = document.createElement('tr');
+	  table.appendChild(row);
+	  for (var j = 0; j<column; j++){
+		var cell = document.createElement('td');
+		if ((i+j)%2 == 1) {
+		  cell.className = 'white';
+		}
+		row.appendChild(cell);
+	  }
+	}
+	</script>
+</body>
+</html>

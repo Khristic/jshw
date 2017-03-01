@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>calculator</title>
+	<meta charset="utf-8" />
+	<style>
+	input {
+		width: 30px;
+		height: 30px;
+		text-align: center;
+		cursor: pointer;
+	}
+	#screen {
+		margin-bottom: 5px;
+		padding-right: 6px;
+		width: 120px;
+		height: 30px;
+		text-align: right;
+		cursor: pointer;
+	}
+	
+	</style>
+</head>
+<body>
+	<form id="calc" name="calculator" >
+		<input id="screen" type="textfield" name="screen" value=""><br>
+		<input type="button" value="C"><br>
+		<input type="button" value="7">
+		<input type="button" value="8">
+		<input type="button" value="9">
+		<input type="button" value="/"><br>
+		<input type="button" value="4">
+		<input type="button" value="5">
+		<input type="button" value="6">
+		<input type="button" value="*"><br>
+		<input type="button" value="1">
+		<input type="button" value="2">
+		<input type="button" value="3">
+		<input type="button" value="-"><br>
+		<input type="button" value="0">
+		<input type="button" value=".">
+		<input type="button" value="+">
+		<input id="result" type="button" value="=">
+	</form>
+</body>
+<script>
+	function Calc(form) {
+		this.form = form;
+		this.a;
+		this.b;
+		this.action;
+		this.result;
+	    this.need_clear = false;
+		this.point=false;
+		this.C=true;
+		
+		this.click = function(key) {
+			switch (key) {
+				case "+":
+					this.set_action("add");
+					break;
+				case "-":
+					this.set_action("sub");
+					break;
+				case "/":
+					this.set_action("del");
+					break;
+				case "*":
+					this.set_action("mul");
+					break;
+				case ".":
+					if (this.point == false){
+						this.output(key);
+						this.point = true;
+					}
+					break;
+				case "C":
+					if (this.C == true){
+						this.form.screen.value = '';
+			            this.need_clear = true;
+					}
+					break;
+				case "=":
+					this.b = parseFloat(this.form.screen.value);
+					this.need_clear = true;
+					this.result = this[this.action]();
+					this.output(this.result);
+					console.log(this);
+					break;
+				default:
+					this.output(key);
+			}
+		}
+		
+		this.set_action = function(action) {
+			this.action = action;
+			this.a = parseFloat(this.form.screen.value);
+			this.need_clear = true;
+			this.point = false;
+		}
+		
+		this.clear = function() {
+			this.form.screen.value = '';
+			this.need_clear = false;
+		}
+		
+		this.output = function(data) {
+			if (this.need_clear == true) {
+				this.clear();
+			}
+			this.form.screen.value += data;
+		}
+		
+		this.add = function() {
+			return this.a + this.b;
+		}
+		this.sub = function() {
+			return this.a - this.b;
+		}
+		this.del = function() { 
+			if(this.b==0){
+				return "ERROR";
+			} else {
+				// return ((this.a*100) / (this.b*100));
+				return Math.round(this.a / this.b * 10000000) / 10000000;
+			}
+		}
+		
+	
+		this.mul = function() {
+			return this.a * this.b;
+		}
+		this.result = function() {
+			
+		}
+	}
+	
+	var form = document.getElementById("calc");
+	var calc = new Calc(form);
+	
+	for (en in form.children) {
+		var elem = form.children[en];
+		if (elem.type == "button") {
+			elem.onclick = function() {
+				calc.click(this.value);
+			}
+		}
+	}
+</script>
+</html>
